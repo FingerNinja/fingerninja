@@ -3,8 +3,9 @@ using System.Collections;
 
 public class MovePlayer : MonoBehaviour {
 
-	public float distance  = 4.5f;
+	public float distance  = 1.0f;
 	public GameObject explosionPrefab;
+	public GameObject ghostPrefab;
 
 	bool tapped = false;
 	bool down = false;
@@ -30,7 +31,7 @@ public class MovePlayer : MonoBehaviour {
 		if(down){
 			Vector3 pos = transform.position;
 			pos.z = 1;
-			GameObject explosion = (GameObject)Instantiate(explosionPrefab, pos, transform.rotation);
+			GameObject explosion = (GameObject)Instantiate(ghostPrefab, pos, transform.rotation);
 			Destroy (explosion, 2);
 			down = false;
 		}

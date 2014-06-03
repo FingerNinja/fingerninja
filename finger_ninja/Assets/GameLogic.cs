@@ -3,10 +3,15 @@ using System.Collections;
 
 public class GameLogic : MonoBehaviour {
 
+	public static int VERTICAL = 0;
+	public static int HORIZONTAL = 1;
+	public static int DIAGONAL = 2;
+
 	// Use this for initialization
 	int level;
 	float timer = 0.0f;
 	public GameObject shurikenPrefab;
+
 
 	void Start () {
 		level = 1;
@@ -16,15 +21,44 @@ public class GameLogic : MonoBehaviour {
 	void FixedUpdate () {
 		timer -= Time.deltaTime;
 		if (timer <= 0) {
-			for(int i = 0; i < level; i++)
+
+			int r = Random.Range(0, 3);
+
+			GameObject player = GameObject.FindGameObjectWithTag("Player");
+			if(player != null)
 			{
-				Instantiate(shurikenPrefab, new Vector3(Random.Range(-2.5f, 2.5f), Random.Range(7, 15), 0), Quaternion.identity);
+				float k = player.transform.position.x;
+				switch(r)
+				{
+					case 0:
+						k = Random.Range(-3f, 3f);
+						Instantiate(shurikenPrefab, new Vector3(k, 7, 0), Quaternion.identity);	
+						Instantiate(shurikenPrefab, new Vector3(k, 8, 0), Quaternion.identity);	
+						Instantiate(shurikenPrefab, new Vector3(k, 9, 0), Quaternion.identity);	
+						Instantiate(shurikenPrefab, new Vector3(k, 10, 0), Quaternion.identity);	
+						break;
+					case 1:
+						//k = Random.Range(-1f, 1f);
+						Instantiate(shurikenPrefab, new Vector3(k-1f, 8, 0), Quaternion.identity);	
+						Instantiate(shurikenPrefab, new Vector3(k-0.5f, 8, 0), Quaternion.identity);	
+						Instantiate(shurikenPrefab, new Vector3(k, 8, 0), Quaternion.identity);
+						Instantiate(shurikenPrefab, new Vector3(k+0.5f, 8, 0), Quaternion.identity);	
+						Instantiate(shurikenPrefab, new Vector3(k+1f, 8, 0), Quaternion.identity);
+						break;
+					case 2:
+						//k = Random.Range(-3f, 3f);
+						Instantiate(shurikenPrefab, new Vector3(k-1f, 7, 0), Quaternion.identity);	
+						Instantiate(shurikenPrefab, new Vector3(k-0.5f, 8, 0), Quaternion.identity);	
+						Instantiate(shurikenPrefab, new Vector3(k, 9, 0), Quaternion.identity);	
+						Instantiate(shurikenPrefab, new Vector3(k+0.5f, 10, 0), Quaternion.identity);
+						Instantiate(shurikenPrefab, new Vector3(k+1f, 11, 0), Quaternion.identity);
+						break;
+				}
 
+				level++;
+
+				timer = 1.0f;
 			}
-			level++;
-
-			timer = 1.0f;
-
 		}
 	}
 }

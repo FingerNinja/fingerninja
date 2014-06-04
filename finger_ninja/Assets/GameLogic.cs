@@ -10,16 +10,18 @@ public class GameLogic : MonoBehaviour {
 	// Use this for initialization
 	int level;
 	float timer = 0.0f;
+	float totalTime = 0.0f;
 	public GameObject shurikenPrefab;
 
 
 	void Start () {
-		level = 1;
+		level = 0;
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		timer -= Time.deltaTime;
+		totalTime += Time.deltaTime;
 		if (timer <= 0) {
 
 			int r = Random.Range(0, 3);
@@ -55,9 +57,11 @@ public class GameLogic : MonoBehaviour {
 						break;
 				}
 
-				level++;
+				timer = Random.Range(0.7f, 1.0f);
 
-				timer = 1.0f;
+
+				level = (int)Mathf.Floor(totalTime / 5.0f);
+				//MoveShuriken.speed = Random.Range(1, 10) + level * 2.0f;
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class MoveShuriken : MonoBehaviour {
@@ -11,20 +11,21 @@ public class MoveShuriken : MonoBehaviour {
 	public int moveType;
 
 	void Start () {
-
+		rigidbody2D.gravityScale = 2;
 		speed = Random.Range (5, 10);
 	}
 	
 	// Update is called once per frame
 	void FixedUpdate () {
 		Vector3 v = rigidbody2D.velocity;
-		v.y = -speed;
+//		v.y = -speed;
 		int val = Random.Range (0, 2);
-		if (val == 0)
-			v.x = speed;
-		else {
-			v.x = -speed;
-		}
+//		if (val == 0)
+//			v.x = speed;
+//		else {
+//			v.x = -speed;
+//		}
 		rigidbody2D.velocity = v;
+
 	}
 }

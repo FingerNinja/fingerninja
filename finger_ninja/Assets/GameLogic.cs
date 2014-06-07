@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GameLogic : MonoBehaviour {
@@ -16,7 +16,6 @@ public class GameLogic : MonoBehaviour {
 
 	void Start () {
 		level = 0;
-
 	}
 	
 	// Update is called once per frame
@@ -35,22 +34,24 @@ public class GameLogic : MonoBehaviour {
 				{
 					case 0:
 						k = Random.Range(-3f, 3f);
-						Instantiate(shurikenPrefab, new Vector3(k, 7, 0), Quaternion.identity);	
+						GameObject verticalShuriken = Instantiate(shurikenPrefab, new Vector3(k, 7, 0), Quaternion.identity) as GameObject;	
+//						(verticalShuriken as MoveShuriken).moveType = MoveShuriken.STRAIGHT_DOWN;
 //						Instantiate(shurikenPrefab, new Vector3(k, 8, 0), Quaternion.identity);	
 //						Instantiate(shurikenPrefab, new Vector3(k, 9, 0), Quaternion.identity);	
 //						Instantiate(shurikenPrefab, new Vector3(k, 10, 0), Quaternion.identity);
 						break;
 					case 1:
-						//k = Random.Range(-1f, 1f);
-						Instantiate(shurikenPrefab, new Vector3(k-1f, 8, 0), Quaternion.identity);	
+						k = Random.Range(-1f, 1f);
+						GameObject zigzagShuriken = Instantiate(shurikenPrefab, new Vector3(k-1f, 7, 0), Quaternion.identity) as GameObject;	
+//						(zigzagShuriken as MoveShuriken).moveType = MoveShuriken.ZIGZAG;
 //						Instantiate(shurikenPrefab, new Vector3(k-0.5f, 8, 0), Quaternion.identity);	
 //						Instantiate(shurikenPrefab, new Vector3(k, 8, 0), Quaternion.identity);
 //						Instantiate(shurikenPrefab, new Vector3(k+0.5f, 8, 0), Quaternion.identity);	
 //						Instantiate(shurikenPrefab, new Vector3(k+1f, 8, 0), Quaternion.identity);
 						break;
 					case 2:
-						//k = Random.Range(-3f, 3f);
-						Instantiate(shurikenPrefab, new Vector3(k-1f, 7, 0), Quaternion.identity);	
+						k = Random.Range(-2f, 2f);
+						Instantiate(shurikenPrefab, new Vector3(k+1f, 7, 0), Quaternion.identity);	
 //						Instantiate(shurikenPrefab, new Vector3(k-0.5f, 8, 0), Quaternion.identity);	
 //						Instantiate(shurikenPrefab, new Vector3(k, 9, 0), Quaternion.identity);	
 //						Instantiate(shurikenPrefab, new Vector3(k+0.5f, 10, 0), Quaternion.identity);
@@ -58,7 +59,7 @@ public class GameLogic : MonoBehaviour {
 						break;
 				}
 
-				timer = Random.Range(0.3f, 0.6f);
+				timer = Random.Range(0.15f, 0.25f);
 
 
 				level = (int)Mathf.Floor(totalTime / 5.0f);

@@ -6,7 +6,7 @@ public class MovePlayer : MonoBehaviour {
 	public float distance  = 1.0f;
 	public GameObject explosionPrefab;
 	public GameObject ghostPrefab;
-	public TrailRenderer trail;
+//	public TrailRenderer trail;
 
 	bool tapped = false;
 	bool down = false;
@@ -14,7 +14,7 @@ public class MovePlayer : MonoBehaviour {
 	public float speed = 10.0f;
 	public float timer = 0f;
 
-	bool dead = false;
+	public bool dead = false;
 	float deathCooldown;
 
 	public bool godMode;
@@ -44,8 +44,8 @@ public class MovePlayer : MonoBehaviour {
 				tapped = true;
 			}
 			if (Input.GetMouseButtonDown (0)) {
-				trail.startWidth = 0.2f;
-				trail.endWidth = 0.2f;
+//				trail.startWidth = 0.2f;
+//				trail.endWidth = 0.2f;
 				down = true;
 			}
 
@@ -76,8 +76,8 @@ public class MovePlayer : MonoBehaviour {
 
 
 		if (down) {
-			trail.startWidth = 0f;
-			trail.endWidth = 0f;
+//			trail.startWidth = 0f;
+//			trail.endWidth = 0f;
 			Vector3 pos = transform.position;
 			pos.z = 1;
 			GameObject explosion = (GameObject)Instantiate (ghostPrefab, pos, transform.rotation);
@@ -87,8 +87,9 @@ public class MovePlayer : MonoBehaviour {
 		} else if(tapped)
 		{
 			if(timer <= 0f)
-			{	trail.startWidth = 0.2f;
-				trail.endWidth = 0.2f;
+			{	
+//				trail.startWidth = 0.2f;
+//				trail.endWidth = 0.2f;
 			}else
 				timer -= Time.deltaTime;
 

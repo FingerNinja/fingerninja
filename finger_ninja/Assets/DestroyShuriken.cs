@@ -5,9 +5,12 @@ public class DestroyShuriken : MonoBehaviour {
 
 	GameObject player_go;
 
+	static Score score;
+
 	// Use this for initialization
 	void Start () {
 		player_go = GameObject.FindGameObjectWithTag ("Player").gameObject;
+
 	}
 	
 	// Update is called once per frame
@@ -17,7 +20,9 @@ public class DestroyShuriken : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D collider)
 	{
-		if (collider.gameObject != player_go)
+		if (collider.gameObject != player_go) {
 			Destroy (collider.gameObject);
+			Score.AddPoint();
+		}
 	}
 }

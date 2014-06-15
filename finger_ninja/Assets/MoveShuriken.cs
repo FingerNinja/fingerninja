@@ -35,8 +35,8 @@ public class MoveShuriken : MonoBehaviour {
 //
 //		}
 //		else {
-		Vector3 pos = new Vector3( Mathf.Sin(transform.position.y) + originalPosition.x, transform.position.y*2f);
-			transform.position = pos;
+//		Vector3 pos = new Vector3( Mathf.Sin(transform.position.y) + originalPosition.x, transform.position.y);
+//			transform.position = pos;
 //		}
 		rigidbody2D.velocity = v;
 
